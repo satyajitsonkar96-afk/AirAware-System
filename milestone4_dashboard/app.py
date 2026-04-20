@@ -1,5 +1,6 @@
 import os
 import gdown
+import streamlit as st
 
 MODEL_PATH = "milestone2_forecasting_model/aqi_model.pkl"
 os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
@@ -7,19 +8,13 @@ os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
 if not os.path.exists(MODEL_PATH):
     file_id = "1C-bAET24SbQKcNdyWmNqu2WYVBsTmpJj"
     url = f"https://drive.google.com/uc?id={file_id}"
-    try:
-        gdown.download(url, MODEL_PATH, quiet=False)
-    except Exception as e:
-        print(f"gdown failed: {e}, trying with fuzzy...")
-        gdown.download(
-            f"https://drive.google.com/file/d/{file_id}/view",
-            MODEL_PATH,
-            quiet=False,
-            fuzzy=True,
-        )
+    gdown.download(url, MODEL_PATH, quiet=False)
 
-
-import streamlit as st
+# Verify the model was downloaded correctly
+if not os.path.exists(MODEL_PATH) or os.path.getsize(MODEL_PATH) < 1000:
+    st.error("❌ Failed to download the ML model. The Google Drive file may not be shared publicly.")
+    st.info("**Fix:** Open Google Drive → Right-click the .pkl file → Share → Change to 'Anyone with the link'")
+    st.stop()
 import pandas as pd
 import joblib
 import sys
