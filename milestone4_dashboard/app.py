@@ -9,6 +9,7 @@ if not os.path.exists(MODEL_PATH):
         "https://drive.google.com/uc?id=1C-bAET24SbQKcNdyWmNqu2WYVBsTmpJj",
         MODEL_PATH,
         quiet=False,
+        fuzzy=True,
     )
 
 
