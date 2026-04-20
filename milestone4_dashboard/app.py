@@ -1,11 +1,15 @@
 import os
-import urllib.request
+import gdown
 
 MODEL_PATH = "milestone2_forecasting_model/aqi_model.pkl"
+os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
 
 if not os.path.exists(MODEL_PATH):
-    url = "https://drive.google.com/file/d/1C-bAET24SbQKcNdyWmNqu2WYVBsTmpJj/view?usp=drive_link"
-    urllib.request.urlretrieve(url, MODEL_PATH)
+    gdown.download(
+        "https://drive.google.com/uc?id=1C-bAET24SbQKcNdyWmNqu2WYVBsTmpJj",
+        MODEL_PATH,
+        quiet=False,
+    )
 
 
 import streamlit as st
