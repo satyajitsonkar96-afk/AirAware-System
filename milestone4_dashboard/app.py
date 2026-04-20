@@ -5,12 +5,18 @@ MODEL_PATH = "milestone2_forecasting_model/aqi_model.pkl"
 os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
 
 if not os.path.exists(MODEL_PATH):
-    gdown.download(
-        "https://drive.google.com/uc?id=1C-bAET24SbQKcNdyWmNqu2WYVBsTmpJj",
-        MODEL_PATH,
-        quiet=False,
-        fuzzy=True,
-    )
+    file_id = "1C-bAET24SbQKcNdyWmNqu2WYVBsTmpJj"
+    url = f"https://drive.google.com/uc?id={file_id}"
+    try:
+        gdown.download(url, MODEL_PATH, quiet=False)
+    except Exception as e:
+        print(f"gdown failed: {e}, trying with fuzzy...")
+        gdown.download(
+            f"https://drive.google.com/file/d/{file_id}/view",
+            MODEL_PATH,
+            quiet=False,
+            fuzzy=True,
+        )
 
 
 import streamlit as st
