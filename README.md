@@ -16,6 +16,14 @@
   Predict · Analyze · Alert · Visualize
 </p>
 
+<p align="center">
+  <a href="https://airaware-system-aqcpndcqiq3bcxl5mtfzum.streamlit.app/">
+    <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit">
+  </a>
+</p>
+
+> 🔗 **Live Demo:** [https://airaware-system-aqcpndcqiq3bcxl5mtfzum.streamlit.app/](https://airaware-system-aqcpndcqiq3bcxl5mtfzum.streamlit.app/)
+
 ---
 
 ## 📖 About
